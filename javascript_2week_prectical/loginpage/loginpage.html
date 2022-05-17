@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <!--html-->
+    <input type="text" placeholder="username" id="user" >
+    <input type="number" placeholder="password" id="pass">
+    <input type="button" value="submit" onclick="submit()">
+
+
+
+    
+    <!--html code finish-->
+    
+    <!--my code is start -->
+    <script>
+         
+        const submit = () =>
+        {
+            let user = document.getElementById("user").value;
+            let pass = document.getElementById("pass").value;
+            let name = "happy";
+            let pass11 = "123";
+             
+            if (user == name || pass == pass11)
+            {
+               alert('ryt');
+            }
+            else
+            {
+                alert('worng');
+            }
+            
+        }
+     
+    </script>
+    <!--my code is finish -->
+
+
+
+
+</body>
+</html>

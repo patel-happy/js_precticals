@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h4 id="demo"></h4>
+
+        <form id="login-from">
+            <label for="Username">USERNAME:</label>
+            <input type="text" name="Username" id="u_name" required><BR><br>
+
+            <label for="Password">PASSWORD:</label>
+            <input type="password" name="Password" id="pass" required><BR><br>
+                
+
+            <button id="loginbutton" onclick="login()">LOGIN</button>
+        </form>
+
+
+
+        <!------here start script -->   
+        <script>
+
+            function login()
+            {
+
+                const Username = document.getElementById("u_name").value;
+                const Password = document.getElementById("pass").value;
+             
+                 if (  Username  == "happy" &&  Password == "123") 
+                 {
+
+                   
+                    window.location.href = "../loginpage/logindone.html";
+                     document.writeln("login successfully ");
+
+                     
+                 } else {
+                     
+                    alert("login cancel");
+                   // modal.show("login cancel");
+                     
+                 } 
+                 // document.getElementById("u_name").innerHTML = name ;
+                 // document.getElementById("pass").innerHTML = paword ;
+            }
+        </script>
+    </body>
+</html>

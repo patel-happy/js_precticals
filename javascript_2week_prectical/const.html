@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+
+<body>
+
+    <h3>this is const variable and variable scope  </h3>
+
+    <h3 id="demo"></h3>
+
+    <script>
+        const d = 60;
+
+        function g() {
+            const d = 30; // give in out put with this d answer .
+            document.write(d +" ");
+
+        }
+        g();
+
+        /*variable scope is this  */
+
+        const k = 70;
+
+        function s() {
+
+            const k = 20;
+        }
+        document.write(k); // this k value get from outside the scope access only .
+        s();
+
+
+    </script>
+
+</body>
+
+</html>
