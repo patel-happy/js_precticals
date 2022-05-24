@@ -3,7 +3,20 @@
     <v-col class="text-center">
       <img src="/v.png" alt="Vuetify.js" class="mb-5" />
       <div>
+        <input class="grey ma-2" type="text" placeholder="search" />
+        <v-btn icon>
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+      </div>
+     
+      <div>
         <form @submit.prevent="addMovie()">
+          <input
+            class="grey ma-2"
+            @change="uploadFile()"
+            ref="file"
+            type="file"
+          />
           <input class="grey ma-2" v-model="obj.name" type="text" />
           <input class="grey ma-2" v-model="obj.date" type="text" />
           <input class="grey ma-2" v-model="obj.language" type="text" />
@@ -14,7 +27,7 @@
           </v-btn>
           <v-btn type="reset">Reset</v-btn>
         </form>
-        <v-container class="my-5">
+        <v-container class="my-5">  
           <v-layout row wrap>
             <v-flex
               xs12
@@ -28,13 +41,7 @@
                 MOVIE
 
                 <v-card-text>
-                  <v-img
-                    v-for="card in cards"
-                    :key="card.title"
-                    :src="card.src"
-                    height="200px"
-                    cover
-                  ></v-img>
+                  <!--<v-img :src="item.images" height="200px" cover></v-img>-->
                   <div class="subheanding">NAME :{{ item.name }}</div>
                   <div class="subheanding">DATE :{{ item.date }}</div>
                   <div class="subheanding">LANGUAGE :{{ item.language }}</div>
@@ -52,6 +59,20 @@
             </v-flex>
           </v-layout>
         </v-container>
+      </div>
+
+       <div>
+        <v-tabs>
+          <!-- <v-tabs>
+          <v-tab>ALL </v-tab>
+          <v-tab>Action</v-tab>
+          <v-tab>Drama </v-tab>
+         <v-tab> Comedy</v-tab>
+        </v-tabs> -->
+          <v-tab v-for="item in items" :key="item">
+            {{ item }}
+          </v-tab>
+        </v-tabs>
       </div>
 
       <blockquote class="blockquote">
@@ -76,12 +97,9 @@ export default {
       isEditing: false,
       obj: {},
       currentmovie: [],
-      cards: [
-        {
-          title: 'Pre-fab homes',
-          src: 'https://maxcdn.icons8.com/app/uploads/2019/05/poster-for-movie.png',
-        },
-      ],
+      images: null,
+      tab: null,
+      items: ['ALL', 'Action', 'Drama', 'Comedy'],
     }
   },
   methods: {
@@ -100,6 +118,10 @@ export default {
       this.isEditing = false
       this.currentmovie[index] = { ...this.obj }
       this.obj = {}
+    },
+    uploadFile(e) {
+      this.images = this.$refs.file.files[0]
+      let url = createObjectURL(this.obj)
     },
   },
 }
