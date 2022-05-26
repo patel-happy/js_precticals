@@ -123,7 +123,7 @@ export default {
       }
     },
     actionMovie() {
-      return this.Movies.filter((item) => item.type == 'action')
+      return this.Movies.filter((item) => item.type == 'action')  
     },
     dramaMovies() {
       return this.Movies.filter((item) => item.type == 'drama')

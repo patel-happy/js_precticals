@@ -98,8 +98,8 @@ export default {
       obj: {},
       currentmovie: [],
       images: null,
-      tab: null,
-      items: ['ALL', 'Action', 'Drama', 'Comedy'],
+      
+      
     }
   },
   methods: {

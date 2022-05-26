@@ -86,7 +86,16 @@ export default {
           title: 'Tabs',
           to: '/tabs',
         },
-         
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Table',
+          to: '/tables',
+        },
+         {
+          icon: 'mdi-chart-bubble',
+          title: 'Tables',
+          to: '/newtable',
+        },
       ],
       miniVariant: false,
       right: true,
