@@ -1,10 +1,24 @@
 <template>
-  <v-data-table :headers="headers" :items="projects" class="elevation-1">
+  <v-data-table
+    :headers="headers"
+    :items="projects"
+    :search="search"
+    class="elevation-1"
+  >
     <!-- second templet for dta  -->
     <template v-slot:top>
       <v-toolbar flat>
         <v-toolbar-title>My Project</v-toolbar-title>
         <v-spacer></v-spacer>
+        <!-- search button -->
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
+        <!-- search button -->
         <!-- first dialog box  -->
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ on, attrs }">
@@ -31,7 +45,7 @@
                   <!-- 1 -->
                   <v-col cols="12" sm="6" md="4">
                     <v-text-field
-                      v-model="name"
+                      v-model="projectForm.name"
                       label="ProjectName"
                     ></v-text-field>
                   </v-col>
@@ -39,7 +53,7 @@
                   <!-- 2 -->
                   <v-col cols="12" sm="6" md="4">
                     <v-text-field
-                      v-model="projectId"
+                      v-model="projectForm.projectId"
                       label="ProjectId"
                     ></v-text-field>
                   </v-col>
@@ -50,7 +64,6 @@
             <!-- card button -->
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="close()">close </v-btn>
               <v-btn
                 color="blue darken-1"
                 text
@@ -77,13 +90,13 @@
     </template>
     <!-- second template  -->
     <!-- pencil template -->
-    <template v-slot:item.actions="{ item,index }">
+    <template v-slot:item.actions="{ item, index }">
       <v-icon
         small
         class="gray mr-2"
-        @click="editItem(item,index)"
+        @click="edititem(item, index)"
         v-show="isEditing"
-      > 
+      >
         mdi-pencil
       </v-icon>
       <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
@@ -126,35 +139,37 @@ export default {
       projects: [],
       name: '',
       projectId: '',
-      edititem: {},
-       editedIndex: -1,
-
+      projectForm: {},
+      editedIndex: -1,
+      search: '',
     }
   },
   methods: {
     newItem() {
+      this.isEditing = false
       this.dialog = ''
+      this.projectForm = {}
     },
     save() {
-      this.projects.push({ name: this.name, projectId: this.projectId })
+      this.projects.push(this.projectForm)
       this.isEditing = true
       this.dialog = false
     },
-    close(index) {
-      this.isEditing = true
-      console.log(this.projects.indexOf(index))
-      this.edititem = this.projects.indexOf()
-      this.projects[index] = { ...this.edititem }
-      this.edititem = {}
-    },
-    editItem(item) {
+    edititem(item) {
+      this.projectForm = { ...item }
       this.dialog = true
       this.isEditing = true
     },
-    update(){
-        
-       this.editedIndex = this.projects.splice(this.editedIndex,1,this.edititem)
-    }
+    update() {
+      this.editedIndex = this.projects.splice(
+        this.editedIndex,
+        1,
+        this.projectForm
+      )
+    },
+    deleteItem(item) {
+      this.projects.splice(this.editedIndex, 1)
+    },
   },
 }
 </script>
