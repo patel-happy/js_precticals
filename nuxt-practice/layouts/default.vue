@@ -88,13 +88,18 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Table',
-          to: '/tables',
+          title: 'Recipe',
+          to: '/recipe',
         },
          {
           icon: 'mdi-chart-bubble',
           title: 'Tables',
           to: '/newtable',
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Recipe2',
+          to: '/RECIPE2',
         },
       ],
       miniVariant: false,
